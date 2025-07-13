@@ -1,3 +1,19 @@
+// Agrupamos por niveles
+const niveles = [
+  { nombre: "1° Nivel", cursos: [1,2,3,4,5] },
+  { nombre: "2° Nivel", cursos: [6,7,8,9,10,11,12] },
+  { nombre: "3° Nivel", cursos: [13,14,15,16,17,18,19] },
+  { nombre: "4° Nivel", cursos: [20,21,22,23,24,25] },
+  { nombre: "5° Nivel", cursos: [26,27,28,29,30,31] },
+  { nombre: "6° Nivel", cursos: [32,33,34,35,36,37] },
+  { nombre: "7° Nivel", cursos: [38,39,40,41,42] },
+  { nombre: "8° Nivel", cursos: [43,44,45,46,47,48] },
+  { nombre: "9° Nivel", cursos: [49,50,51,52,53] },
+  { nombre: "10° Nivel", cursos: [54,55,56,57,58,59] },
+  { nombre: "11° Nivel", cursos: [60] },
+];
+
+// Cursos con prerrequisitos
 const cursos = [
   { id: 1, nombre: "Ingeniería y Sociedad", requisitos: [] },
   { id: 2, nombre: "Introducción a la Química", requisitos: [] },
@@ -58,30 +74,38 @@ const cursos = [
   { id: 57, nombre: "Electivo de Especialidad IV", requisitos: [] },
   { id: 58, nombre: "Laboratorio de Control", requisitos: [52] },
   { id: 59, nombre: "Ética Profesional", requisitos: [] },
-  { id: 60, nombre: "Actividad de Titulación", requisitos: [49] }
+  { id: 60, nombre: "Actividad de Titulación", requisitos: [49] },
 ];
 
 let aprobados = JSON.parse(localStorage.getItem("aprobados")) || [];
 
 function render() {
-  const malla = document.getElementById("malla");
-  malla.innerHTML = "";
+  const contenedor = document.getElementById("contenedor-malla");
+  contenedor.innerHTML = "";
 
-  cursos.forEach(curso => {
-    const div = document.createElement("div");
-    div.className = "curso";
-    
-    const habilitado = curso.requisitos.every(req => aprobados.includes(req));
-    if (habilitado) div.classList.add("activo");
-    if (aprobados.includes(curso.id)) div.classList.add("aprobado");
+  niveles.forEach(nivel => {
+    const col = document.createElement("div");
+    col.className = "nivel";
+    col.innerHTML = `<h2>${nivel.nombre}</h2>`;
 
-    div.innerHTML = `<strong>${curso.nombre}</strong><small>ID: ${curso.id}</small>`;
-    
-    if (habilitado) {
-      div.addEventListener("click", () => toggleAprobado(curso.id));
-    }
+    nivel.cursos.forEach(id => {
+      const curso = cursos.find(c => c.id === id);
+      const div = document.createElement("div");
+      div.className = "curso";
 
-    malla.appendChild(div);
+      const habilitado = curso.requisitos.every(req => aprobados.includes(req));
+      if (habilitado) div.classList.add("activo");
+      if (aprobados.includes(curso.id)) div.classList.add("aprobado");
+
+      div.innerHTML = `<strong>${curso.nombre}</strong><small>ID: ${curso.id}</small>`;
+      if (habilitado) {
+        div.addEventListener("click", () => toggleAprobado(curso.id));
+      }
+
+      col.appendChild(div);
+    });
+
+    contenedor.appendChild(col);
   });
 }
 
