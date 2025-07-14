@@ -1,16 +1,16 @@
 // Agrupamos por niveles
 const niveles = [
-  { nombre: "1° Nivel", cursos: [1,2,3,4,5] },
-  { nombre: "2° Nivel", cursos: [6,7,8,9,10,11,12] },
-  { nombre: "3° Nivel", cursos: [13,14,15,16,17,18,19] },
-  { nombre: "4° Nivel", cursos: [20,21,22,23,24,25] },
-  { nombre: "5° Nivel", cursos: [26,27,28,29,30,31] },
-  { nombre: "6° Nivel", cursos: [32,33,34,35,36,37] },
-  { nombre: "7° Nivel", cursos: [38,39,40,41,42] },
-  { nombre: "8° Nivel", cursos: [43,44,45,46,47,48] },
-  { nombre: "9° Nivel", cursos: [49,50,51,52,53] },
-  { nombre: "10° Nivel", cursos: [54,55,56,57,58,59] },
-  { nombre: "11° Nivel", cursos: [60] },
+  { nombre: "1° Nivel", cursos: [1,2,3,4,5,6,7] },
+  { nombre: "2° Nivel", cursos: [8,9,10,11,12,13,14] },
+  { nombre: "3° Nivel", cursos: [15,16,17,18,19,20] },
+  { nombre: "4° Nivel", cursos: [21,22,23,24,25,26] },
+  { nombre: "5° Nivel", cursos: [27,28,29,30,31,32] },
+  { nombre: "6° Nivel", cursos: [33,34,35,36,37,38] },
+  { nombre: "7° Nivel", cursos: [39,40,41,42,43] },
+  { nombre: "8° Nivel", cursos: [44,45,46,47,48,49] },
+  { nombre: "9° Nivel", cursos: [50,51,52,53,54] },
+  { nombre: "10° Nivel", cursos: [55,56,57,58,59,60] },
+  { nombre: "11° Nivel", cursos: [61] },
 ];
 
 // Cursos con prerrequisitos
